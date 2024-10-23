@@ -1,0 +1,33 @@
+<div class="min-h-screen bg-gradient-to-b from-white to-gray-100 flex flex-col justify-between p-6">
+    <div class="w-full max-w-md mx-auto ">
+      <img src="assets/images/Logo_completo.png" alt="Dagpacket Logo" class="max-w-[60%] h-auto mx-auto mb-6 size-auto">
+    </div>
+    <div class="flex-grow flex flex-col items-center justify-center">
+      <div class="relative w-full max-w-md">
+        <ng-lottie 
+          [options]="carro_lottie" 
+          (animationCreated)="onAnimate($event)"
+          class="w-4/5 mx-auto"
+        ></ng-lottie>
+      </div>
+      
+      <h2 class="text-center text-2xl font-bold text-gray-800 my-6 font-sans">App Mantenimiento</h2>
+      
+      <div class="space-y-4 bg-white bg-opacity-50 rounded-lg p-6 mb-6 w-full max-w-md size-auto">
+        <p class="text-center text-gray-700 flex items-center justify-center">
+          <span class="bg-[#c55a11] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 shadow-md">1</span>
+          En la pantalla del locker
+        </p>
+        <p class="text-center text-gray-700 flex items-center justify-center max-w-md size-auto">
+          <span class="bg-[#c55a11] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 shadow-md">2</span>
+          Selecciona Mantenimiento
+        </p>
+      </div>
+    </div>
+  
+    <div class="w-full max-w-md mx-auto">
+      <button  (click)="onSubmit()" class="w-full bg-[#c55a11] text-white font-bold py-4 px-4 rounded-lg hover:bg-[#b54901] transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+        Comenzar
+      </button>
+    </div>
+  </div>

@@ -1,0 +1,42 @@
+<div class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-6 relative">
+    <!-- Botón de regreso -->
+    <button (click)="goBackToList()" class="absolute top-4 left-4 bg-[#c55a11] text-white p-2 rounded-full hover:bg-[#b54901] transition-colors duration-300">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+  
+    <!-- Header -->
+    <div class="w-full max-w-4xl mx-auto mb-8 pt-8">
+      <img src="assets/images/Logo_completo.png" alt="Dagpacket Logo" class="max-w-[200px] h-auto mx-auto">
+    </div>
+  
+    <!-- Lista de Reportes -->
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold mb-6 text-[#c55a11] flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+        </svg>
+        Lista de Reportes Completados
+      </h2>
+  
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div *ngFor="let report of reports" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div class="p-4">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm font-semibold text-gray-600">ID: {{report.id}}</span>
+              <span class="text-sm text-gray-500">{{report.date | date:'dd/MM/yyyy'}}</span>
+            </div>
+            <h3 class="text-lg font-bold text-[#c55a11] mb-2">{{report.taskDescription}}</h3>
+            <p class="text-gray-700 mb-4">{{report.whatHappened}}</p>
+            <div class="flex justify-between items-center">
+              <button (click)="viewReportDetails(report.id)" class="bg-[#c55a11] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#b54901] transition-colors duration-300">
+                Ver Detalles
+              </button>
+              <button (click)="generatePDF(report.id)" class="text-[#c55a11] hover:text-[#b54901] transition-colors duration-300">
+                <i class="fa-solid fa-file-pdf fa-lg"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

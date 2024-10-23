@@ -1,0 +1,65 @@
+<div class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-6 flex flex-col justify-between">
+    <!-- Logo -->
+    <div class="w-full max-w-md mx-auto mb-8">
+      <img src="assets/images/Logo_completo.png" alt="Dagpacket Logo" class="max-w-[60%] h-auto mx-auto">
+    </div>
+  
+    <div class="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+      <!-- Título -->
+      <h1 class="text-2xl font-bold text-white bg-[#c55a11] py-4 px-6 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+        </svg>
+        Reporte
+      </h1>
+  
+      <!-- Formulario -->
+      <form (ngSubmit)="onSubmit()" class="p-6 space-y-6">
+        <div class="space-y-2">
+          <label for="whatHappened" class="block text-sm font-medium text-gray-700">¿Qué se hizo?</label>
+          <textarea id="whatHappened" [(ngModel)]="whatHappened" name="whatHappened" rows="3" 
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#c55a11] focus:border-transparent transition duration-200 ease-in-out"></textarea>
+        </div>
+  
+        <div class="space-y-2">
+          <label for="observations" class="block text-sm font-medium text-gray-700">Observaciones</label>
+          <textarea id="observations" [(ngModel)]="observations" name="observations" rows="3" 
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#c55a11] focus:border-transparent transition duration-200 ease-in-out"></textarea>
+        </div>
+  
+        <div class="space-y-2">
+          <label for="notes" class="block text-sm font-medium text-gray-700">Notas</label>
+          <textarea id="notes" [(ngModel)]="notes" name="notes" rows="3" 
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#c55a11] focus:border-transparent transition duration-200 ease-in-out"></textarea>
+        </div>
+  
+        <!-- Captura de Evidencia -->
+        <div class="space-y-2">
+          <label class="block text-sm font-medium text-gray-700">Evidencia</label>
+          <div class="flex flex-col items-center">
+            <button type="button" (click)="captureImage()" 
+                    class="bg-[#c55a11] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#b54901] transition duration-300 mb-2">
+              Tomar Foto
+            </button>
+            <div *ngIf="showCamera" class="relative w-full max-w-md">
+              <video #videoElement autoplay class="w-full rounded-lg"></video>
+              <button (click)="takePicture()" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#c55a11] text-white font-bold py-2 px-4 rounded-full hover:bg-[#b54901] transition duration-300">
+                Capturar
+              </button>
+            </div>
+            <canvas #canvasElement style="display: none;"></canvas>
+            <img *ngIf="capturedImage" [src]="capturedImage" alt="Evidencia capturada" class="max-w-full h-auto rounded-lg shadow-md mt-4">
+          </div>
+        </div>
+  
+        <button type="submit" 
+                class="w-full bg-[#000080] text-white font-bold py-4 px-6 rounded-lg hover:bg-[#00006b] transition duration-300 transform hover:-translate-y-0.5 hover:shadow-lg">
+          Enviar Reporte
+        </button>
+      </form>
+    </div>
+  
+    <div class="w-full max-w-md mx-auto mt-8 text-center text-sm text-gray-500">
+      © 2024 Dagpacket. Todos los derechos reservados.
+    </div>
+  </div>

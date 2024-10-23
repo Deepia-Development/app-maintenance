@@ -1,0 +1,42 @@
+<div class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-6 flex flex-col">
+  <!-- Header -->
+  <div class="w-full max-w-md mx-auto mb-8">
+    <img src="assets/images/Logo_completo.png" alt="Dagpacket Logo" class="max-w-[60%] h-auto mx-auto">
+  </div>
+
+  <!-- Lista de tareas -->
+  <div class="flex-grow max-w-md mx-auto w-full bg-white rounded-xl shadow-lg p-6">
+    <h2 class="text-2xl font-bold mb-6 flex items-center text-[#c55a11]">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+      </svg>
+      Lista de tareas
+    </h2>
+    <ul class="space-y-4">
+      <li *ngFor="let task of tasks" class="flex items-center bg-gray-50 p-4 rounded-lg transition-all duration-300 hover:shadow-md">
+        <span class="mr-3 text-[#c55a11] font-bold text-lg">{{ task.id }}</span>
+        <span [class.line-through]="task.completed" [class.text-gray-400]="task.completed" class="flex-grow text-gray-700">{{ task.description }}</span>
+        <button (click)="openReportForTask(task)" 
+                class="w-8 h-8 rounded-full border-2 border-[#c55a11] flex items-center justify-center transition-all duration-300 hover:bg-[#c55a11] hover:text-white"
+                [ngClass]="{'bg-[#c55a11]': task.completed}">
+          <svg *ngIf="task.completed" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+<div class="mt-8 max-w-md mx-auto w-full">
+  <button  (click)="onListReporte()" class="w-full bg-[#2929b6] text-white font-bold py-4 px-6 rounded-xl hover:bg-[#6a47e7] transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+    Lista de Reportes
+  </button>
+</div>
+
+  <!-- Botón de reporte general -->
+  <div class="mt-8 max-w-md mx-auto w-full">
+    <button (click)="onReporte()" class="w-full bg-[#c55a11] text-white font-bold py-4 px-6 rounded-xl hover:bg-[#b54901] transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+      Generar Reporte General
+    </button>
+  </div>
+</div>
